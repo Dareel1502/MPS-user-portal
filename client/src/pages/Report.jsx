@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 function Report() {
+  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState('');
   const [otherCategory, setOtherCategory] = useState('');
   const [description, setDescription] = useState('');
@@ -18,23 +19,43 @@ function Report() {
       reader.readAsDataURL(file);
     }
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const finalCategory = selectedCategory === 'Other please specify' ? otherCategory : selectedCategory;
-    console.log({
+    const newReport = {
       category: finalCategory,
       description,
-      image
-    });
+      image,
+      date: new Date().toLocaleString()
+    };
+    
+    addReport(newReport); 
     alert('Report submitted successfully!');
+  
+    setSelectedCategory('');
+    setOtherCategory('');
+    setDescription('');
+    setImage(null);
   };
+
 
   return (
     <div className="min-h-screen bg-gray-100 p-4 md:flex md:justify-center">
       <div className="md:w-2/3 lg:w-1/2 xl:w-1/3">
-        <h1 className="text-2xl font-bold mb-6 text-center">Create Report</h1>
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-2xl font-bold">Create Report</h1>
+          <button
+  onClick={() => navigate('/my-reports')} 
+  className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+>
+  
+  View My Reports
+</button>
+        </div>
         
         <form onSubmit={handleSubmit} className="space-y-6">
+       
           <div className="bg-white p-4 rounded-lg shadow">
             <h2 className="text-lg font-semibold mb-3">Upload Evidence</h2>
             <div className="flex justify-center">
@@ -94,6 +115,7 @@ function Report() {
             ></textarea>
           </div>
 
+         
           <div className="bg-white p-4 rounded-lg shadow">
             <h2 className="text-lg font-semibold mb-3">Category</h2>
             <div className="space-y-2">
@@ -127,17 +149,20 @@ function Report() {
             </div>
           </div>
 
-          <button
-            type="submit"
-            disabled={!selectedCategory || (!otherCategory && selectedCategory === 'Other please specify') || !description}
-            className={`w-full py-3 px-4 rounded-lg font-bold text-white ${
-              (!selectedCategory || (!otherCategory && selectedCategory === 'Other please specify') || !description) 
-                ? 'bg-gray-400 cursor-not-allowed' 
-                : 'bg-blue-600 hover:bg-blue-700'
-            }`}
-          >
-            SEND REPORT
-          </button>
+       
+          <div className="flex space-x-4">
+            <button
+              type="submit"
+              disabled={!selectedCategory || (!otherCategory && selectedCategory === 'Other please specify') || !description}
+              className={`flex-1 py-3 px-4 rounded-lg font-bold text-white ${
+                (!selectedCategory || (!otherCategory && selectedCategory === 'Other please specify') || !description) 
+                  ? 'bg-gray-400 cursor-not-allowed' 
+                  : 'bg-blue-600 hover:bg-blue-700'
+              }`}
+            >
+              SEND REPORT
+            </button>
+          </div>
         </form>
       </div>
     </div>
