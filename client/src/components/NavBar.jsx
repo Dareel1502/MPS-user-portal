@@ -10,7 +10,7 @@ function NavBar() {
         <div className="mx-auto md:w-2/3 lg:w-1/2 xl:w-1/3">
           <div className="flex justify-around items-center p-2 bg-white">
             <NavLink 
-              to="/home" 
+              to="/" 
               className={({ isActive }) => 
                 `flex flex-col items-center p-2 rounded-lg ${isActive ? 'text-blue-600' : 'text-gray-500 hover:text-blue-500'}`
               }

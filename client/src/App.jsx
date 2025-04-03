@@ -47,9 +47,9 @@ function App() {
   return (
     <Router>
       <div className="flex flex-col min-h-screen bg-gray-50">
-        <div className="flex-grow pb-16"> 
+        <div className="flex-grow pb-16">
           <Routes>
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/report" element={<Report addReport={addReport} />} />
             <Route path="/my-reports" element={<Viewreports reports={reports} setReports={setReports} />} />
