@@ -1,4 +1,13 @@
 import React, { useState } from 'react';
+import alertIcon from '../assets/alert-icon.png';
+import calendarIcon from '../assets/calendar-icon.png';
+import statsIcon from '../assets/stats-icon.png';
+import locationIcon from '../assets/location-icon.png';
+import timeIcon from '../assets/time-icon.png';
+import chevronRightIcon from '../assets/chevron-right-icon.png';
+import checkIcon from '../assets/check-icon.png';
+
+
 
 function Home() {
   const [currentReports] = useState([
@@ -19,8 +28,8 @@ function Home() {
     setTasks(tasks.map(task => 
       task.id === taskId ? { ...task, completed: !task.completed } : task
     ));
-
   };
+
   return (
     <div className="min-h-screen bg-gray-50 p-4 pb-24 lg:pb-6">
       <div className="mx-auto md:w-2/3 lg:w-1/2 xl:w-1/3">
@@ -41,9 +50,7 @@ function Home() {
                     Police ID #4521
                   </div>
                 </div>
-               
               </div>
-        
             </div>
           </div>
         </header>
@@ -52,16 +59,12 @@ function Home() {
           <section>
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-semibold text-gray-800 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-blue-700" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9z" clipRule="evenodd" />
-                </svg>
+                <img src={alertIcon} alt="Alert" className="h-5 w-5 mr-2" />
                 Current Reports
               </h2>
               <button className="text-sm text-blue-700 font-medium hover:text-blue-900 transition-colors flex items-center">
                 View All
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
+                <img src={chevronRightIcon} alt="Chevron right" className="h-4 w-4 ml-1" />
               </button>
             </div>
             
@@ -96,16 +99,11 @@ function Home() {
                     </div>
                   </div>
                   <div className="flex items-center mt-2 text-sm text-gray-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
+                    <img src={locationIcon} alt="Location" className="h-4 w-4 mr-1" />
                     {report.location}
                   </div>
                   <div className="flex items-center mt-1 text-xs text-gray-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+                    <img src={timeIcon} alt="Time" className="h-3 w-3 mr-1" />
                     {report.time}
                   </div>
                 </div>
@@ -116,16 +114,12 @@ function Home() {
           <section>
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-semibold text-gray-800 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-blue-700" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
-                </svg>
+                <img src={calendarIcon} alt="Calendar" className="h-5 w-5 mr-2" />
                 Tasks To Do
               </h2>
               <button className="text-sm text-blue-700 font-medium hover:text-blue-900 transition-colors flex items-center">
                 View All
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
+                <img src={chevronRightIcon} alt="Chevron right" className="h-4 w-4 ml-1" />
               </button>
             </div>
             
@@ -140,9 +134,7 @@ function Home() {
                       }`}
                     >
                       {task.completed && (
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
+                        <img src={checkIcon} alt="Check" className="h-4 w-4" />
                       )}
                     </button>
                     <div className="flex-1 min-w-0">
@@ -150,16 +142,12 @@ function Home() {
                         {task.title}
                       </h3>
                       <div className="flex items-center mt-1 text-sm text-gray-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
+                        <img src={timeIcon} alt="Time" className="h-4 w-4 mr-1" />
                         {task.time}
                       </div>
                     </div>
                     {task.completed && (
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 text-green-500 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
+                      <img src={checkIcon} alt="Check" className="h-5 w-5 ml-2 flex-shrink-0" />
                     )}
                   </div>
                 </div>
@@ -169,9 +157,7 @@ function Home() {
 
           <section className="hidden lg:block">
             <h2 className="text-xl font-semibold text-gray-800 flex items-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-blue-700" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
-              </svg>
+              <img src={statsIcon} alt="Stats" className="h-5 w-5 mr-2" />
               Quick Stats
             </h2>
             <div className="grid grid-cols-3 gap-3">
@@ -190,8 +176,6 @@ function Home() {
             </div>
           </section>
         </div>
-
-
       </div>
     </div>
   );
